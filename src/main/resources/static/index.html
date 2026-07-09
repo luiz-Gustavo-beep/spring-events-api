@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos API</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Eventos API</h1>
+            <p>Faça login ou cadastre um usuário para se inscrever em eventos. Apenas o administrador pode criar eventos.</p>
+        </header>
+
+        <section class="card" id="login-section">
+            <h2>Entrar</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input id="login-email" type="email" placeholder="email@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-senha">Senha</label>
+                    <input id="login-senha" type="password" placeholder="Senha" required>
+                </div>
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+
+        <section class="card" id="register-section">
+            <h2>Cadastro de usuário</h2>
+            <form id="usuario-form">
+                <div class="form-group">
+                    <label for="usuario-nome">Nome</label>
+                    <input id="usuario-nome" type="text" placeholder="Nome completo" required>
+                </div>
+                <div class="form-group">
+                    <label for="usuario-email">Email</label>
+                    <input id="usuario-email" type="email" placeholder="email@exemplo.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="usuario-senha">Senha</label>
+                    <input id="usuario-senha" type="password" placeholder="Senha" required>
+                </div>
+                <div class="form-group">
+                    <label for="usuario-data-nascimento">Data de nascimento</label>
+                    <input id="usuario-data-nascimento" type="date">
+                </div>
+                <button type="submit">Cadastrar Usuário</button>
+            </form>
+        </section>
+
+        <section class="card hidden" id="user-dashboard">
+            <div class="dashboard-header">
+                <h2>Bem-vindo, <span id="user-name-display"></span></h2>
+                <button id="logout-button" class="secondary">Sair</button>
+            </div>
+
+            <div class="card small-card">
+                <h3>Eventos disponíveis</h3>
+                <div class="form-group">
+                    <label for="inscricao-evento">Escolha um evento</label>
+                    <select id="inscricao-evento"></select>
+                </div>
+                <button id="inscrever-button">Inscrever no evento</button>
+            </div>
+
+            <div class="card small-card">
+                <h3>Meus eventos</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Título</th>
+                                <th>Local</th>
+                                <th>Início</th>
+                                <th>Fim</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inscricoes-list"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="card hidden" id="admin-dashboard">
+            <div class="dashboard-header">
+                <h2>Painel do Administrador</h2>
+                <button id="logout-button-admin" class="secondary">Sair</button>
+            </div>
+
+            <div class="card small-card">
+                <h3>Criar evento</h3>
+                <form id="evento-form">
+                    <div class="form-group">
+                        <label for="evento-titulo">Título</label>
+                        <input id="evento-titulo" type="text" placeholder="Título do evento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="evento-descricao">Descrição</label>
+                        <textarea id="evento-descricao" placeholder="Descrição do evento" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="evento-local">Local</label>
+                        <input id="evento-local" type="text" placeholder="Local do evento" required>
+                    </div>
+                    <div class="line">
+                        <div class="form-group">
+                            <label for="evento-data-inicio">Data e hora início</label>
+                            <input id="evento-data-inicio" type="datetime-local" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="evento-data-fim">Data e hora fim</label>
+                            <input id="evento-data-fim" type="datetime-local" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="evento-vagas">Vagas</label>
+                        <input id="evento-vagas" type="number" min="1" value="10" required>
+                    </div>
+                    <button type="submit">Cadastrar Evento</button>
+                </form>
+            </div>
+
+            <div class="card small-card">
+                <h3>Criar usuário</h3>
+                <form id="admin-user-form">
+                    <div class="form-group">
+                        <label for="admin-usuario-nome">Nome</label>
+                        <input id="admin-usuario-nome" type="text" placeholder="Nome completo" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-usuario-email">Email</label>
+                        <input id="admin-usuario-email" type="email" placeholder="email@exemplo.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-usuario-senha">Senha</label>
+                        <input id="admin-usuario-senha" type="password" placeholder="Senha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="admin-usuario-perfil">Perfil</label>
+                        <select id="admin-usuario-perfil">
+                            <option value="USUARIO" selected>USUARIO</option>
+                            <option value="ADMIN">ADMIN</option>
+                        </select>
+                    </div>
+                    <button type="submit">Cadastrar Usuário</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Mensagens</h2>
+            <div id="mensagens" class="message-box"></div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

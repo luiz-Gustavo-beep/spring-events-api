@@ -30,4 +30,44 @@ public class Inscricao {
     @JoinColumn(name = "evento_id")
     private Evento evento;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataHoraInscricao() {
+        return dataHoraInscricao;
+    }
+
+    public void setDataHoraInscricao(LocalDateTime dataHoraInscricao) {
+        this.dataHoraInscricao = dataHoraInscricao;
+    }
+
+    public StatusInscricao getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusInscricao status) {
+        this.status = status;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public Evento getEvento() {
+        return evento;
+    }
+
+    public void setEvento(Evento evento) {
+        this.evento = evento;
+    }
+
 }
